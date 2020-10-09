@@ -50,7 +50,10 @@ class ProjectController extends Controller
         ]);
         Project::create($request->only("name", "description"));
         return redirect(route("projects.index"))
-            ->with("success", __("¡Proyecto creado!"));
+            ->with([
+                'status'=>__("¡Proyecto creado!"),
+                'color'=> 'success'
+            ]);
     }
 
     /**
@@ -94,7 +97,10 @@ class ProjectController extends Controller
         ]);
         $project->fill($request->only("name", "description"))->save();
         return redirect(route("projects.index"))
-            ->with("success", __("¡Proyecto actualizado!"));
+            ->with([
+                'status'=>__("¡Proyecto actualizado!"),
+                'color'=> 'primary'
+            ]);
     }
 
     /**
@@ -107,6 +113,9 @@ class ProjectController extends Controller
     {
         $project->delete();
         return redirect(route("projects.index"))
-        ->with("success", __("¡Proyecto eliminado!"));
+        ->with([
+            'status'=>__("¡Proyecto eliminado!"),
+            'color'=> 'danger'
+        ]);
     }
 }

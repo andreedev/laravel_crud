@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
@@ -57,7 +57,7 @@
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle text-center" href="#" role="button"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     <i class="fa fa-user-circle" aria-hidden="true"></i>
                                     {{ Auth::user()->name }}
@@ -82,18 +82,14 @@
             </div>
         </nav>
 
-        @if(session('success'))
+        @if(session('status') || session('color'))
             <div class="container mt-4">
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <div class="alert alert-{{ session('color') ?? 'dark' }} alert-dismissible fade show" role="alert">
+                    {{ session('status') }}
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
+                      <span aria-hidden="true">&times;</span>
                     </button>
-                    {{ session('success') }}
                 </div>
-                <script>
-                    $(".alert").alert();
-
-                </script>
             </div>
         @endif
 

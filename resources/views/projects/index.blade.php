@@ -31,12 +31,12 @@
                             <td>{{ $project->user->name }}</td>
                             <td>{{ date_format($project->created_at, "d/m/Y") }}</td>
                             <td>
-                                <a class="btn btn-primary" href="{{ route("projects.edit", ["project" => $project]) }}" role="button">
+                                <a class="btn btn-primary mx-2" href="{{ route("projects.edit", ["project" => $project]) }}" role="button">
                                     <i class="fas fa-edit"></i>
                                     {{ __("Editar") }}
                                 </a>
                                 <a 
-                                    class="btn btn-danger" 
+                                    class="btn btn-danger mx-2" 
                                     role="button"
                                     onclick="event.preventDefault();document.getElementById('delete-project-{{ $project->id }}-form').submit();"
                                 >
